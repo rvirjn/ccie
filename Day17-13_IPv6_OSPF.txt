@@ -1,0 +1,261 @@
+!!!!!!!!!!!!!!!!!R1!!!!!!!!
+en
+config t
+ipv6 unicast-routing
+exit
+
+en
+show ipv6 interface brief
+show ipv6 route
+
+
+
+
+en
+config t
+ho R1
+interface Fa0/0
+ipv6 address 2001:172:16:12::1/64
+no shutdown
+exit
+exit
+
+en
+config t
+interface Fa0/1
+ipv6 address 2001:172:16:11::1/64
+no shutdown
+exit
+exit
+
+en
+config t
+interface l0
+ip address 10.1.1.1 255.255.255.255
+exit
+exit
+
+en
+config t
+interface l2
+ipv6 address 2001:10:1:1::1/128
+exit
+exit
+
+
+en
+config t
+ipv6 route ::/0 2001:172:16:12::2
+exit
+
+!!!!!!!!! OR !!!!!!!!
+
+en
+config t
+interface range f0/0-1
+ipv6 ospf 1 area 1
+
+
+!!!!!!!!R2!!!!!!!!!!!!
+
+en
+config t
+ipv6 unicast-routing
+exit
+
+
+en
+config t
+ho R2
+interface Fa0/0
+ipv6 address 2001:172:16:12::2/64
+no shutdown
+exit
+exit
+
+en
+config t
+interface Fa0/1
+ipv6 address 2001:172:16:23::2/64
+no shutdown
+exit
+exit
+
+
+en
+config t
+interface Fa1/0
+ipv6 address 2001:172:16:24::2/64
+no shutdown
+exit
+exit
+
+
+en
+config t
+interface l0
+ip address 10.2.2.2 255.255.255.255
+exit
+exit
+
+en
+config t
+interface l2
+ipv6 address 2001:10:2:2::2/128
+exit
+exit
+
+en
+config t
+ipv6 route 2001::10:3:3::3/128 2001:172:16:23::3
+exit
+
+
+!!!!!!!!! OR !!!!!!!!
+
+en
+config t
+interface range f0/0-1, f1/0
+ipv6 ospf 1 area 1
+
+!!!!!!!!!!!!!!!R3!!!!!!!!
+
+en
+config t
+ipv6 unicast-routing
+exit
+
+
+en
+config t
+ho R3
+interface Fa0/0
+ipv6 address 2001:172:16:23::3/64
+no shutdown
+exit
+exit
+
+en
+config t
+interface Fa0/1
+ip address 192.168.23.3 255.255.255.0
+no shutdown
+exit
+exit
+
+en
+config t
+interface l0
+ip address 10.3.3.3 255.255.255.255
+exit
+exit
+
+en
+config t
+interface l2
+ipv6 address 2001:10:3:3::3/128
+exit
+exit
+
+en
+config t
+ipv6 route ::/0 2001:172:16:23::2
+exit
+
+!!!!!!!OR!!!!!!!
+
+en
+config t
+interface f0/0
+ipv6 ospf 1 area 1
+
+
+
+!!!!!!!!!!!!!!!R4
+
+en
+config t
+ipv6 unicast-routing
+exit
+
+
+en
+config t
+ho R4
+interface Fa0/0
+ip address 192.168.23.4 255.255.255.0
+no shutdown
+exit
+exit
+
+en
+config t
+interface Fa0/1
+ip address 192.168.12.4 255.255.255.0
+no shutdown
+exit
+exit
+
+
+en
+config t
+interface Fa1/0
+ip address 192.168.24.4 255.255.255.0
+no shutdown
+exit
+exit
+
+
+en
+config t
+interface l0
+ip address 11.1.1.1 255.255.255.255
+exit
+exit
+
+
+en
+config t
+interface range f0/0-1
+ip ospf 1 area 2
+
+!!!!!!!!!!!!!!!R5!!!!!!!!
+
+en
+config t
+ipv6 unicast-routing
+exit
+
+
+en
+config t
+ho R5
+interface Fa0/0
+ip address 192.168.12.5 255.255.255.0
+no shutdown
+exit
+exit
+
+en
+config t
+ho R5
+interface Fa0/1
+ip address 192.168.11.5 255.255.255.0
+no shutdown
+exit
+exit
+
+en
+config t
+interface l0
+ip address 11.2.2.2 255.255.255.255
+exit
+exit
+
+en
+config t
+interface range f0/0-1
+ip ospf 1 area 2
+
+!!!!!!!
+
