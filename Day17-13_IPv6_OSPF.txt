@@ -45,15 +45,18 @@ exit
 
 en
 config t
-ipv6 route ::/0 2001:172:16:12::2
-exit
+interface range f0/0-1
+ipv6 ospf 1 area 1
 
 !!!!!!!!! OR !!!!!!!!
 
 en
 config t
-interface range f0/0-1
-ipv6 ospf 1 area 1
+ipv6 route ::/0 2001:172:16:12::2
+exit
+
+
+
 
 
 !!!!!!!!R2!!!!!!!!!!!!
@@ -107,16 +110,19 @@ exit
 
 en
 config t
-ipv6 route 2001::10:3:3::3/128 2001:172:16:23::3
-exit
-
+interface range f0/0-1, f1/0
+ipv6 ospf 1 area 1
 
 !!!!!!!!! OR !!!!!!!!
 
 en
 config t
-interface range f0/0-1, f1/0
-ipv6 ospf 1 area 1
+ipv6 route 2001::10:3:3::3/128 2001:172:16:23::3
+exit
+
+
+
+
 
 !!!!!!!!!!!!!!!R3!!!!!!!!
 
@@ -157,17 +163,19 @@ ipv6 address 2001:10:3:3::3/128
 exit
 exit
 
-en
-config t
-ipv6 route ::/0 2001:172:16:23::2
-exit
-
-!!!!!!!OR!!!!!!!
 
 en
 config t
 interface f0/0
 ipv6 ospf 1 area 1
+
+!!!!!!!OR!!!!!!!
+
+en
+config t
+ipv6 route ::/0 2001:172:16:23::2
+exit
+
 
 
 
@@ -219,6 +227,7 @@ config t
 interface range f0/0-1
 ip ospf 1 area 2
 
+
 !!!!!!!!!!!!!!!R5!!!!!!!!
 
 en
@@ -257,5 +266,5 @@ config t
 interface range f0/0-1
 ip ospf 1 area 2
 
-!!!!!!!
+
 
