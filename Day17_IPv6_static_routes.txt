@@ -43,18 +43,16 @@ exit
 exit
 
 
-en
-config t
-interface range f0/0-1
-no ipv6 ospf 1 area 1
-exit
-exit
 
 en
 config t
 ipv6 route ::/0 2001:172:16:12::2
 exit
 
+en
+config t
+ip route 0.0.0.0/0 255.255.255.0 10.2.2.2
+exit
 
 ping 10.2.2.2
 ping 10.2.2.2
@@ -119,14 +117,6 @@ ipv6 address 2001:10:2:2::2/128
 exit
 exit
 
-en
-config t
-interface range f0/0-1, f1/0
-no ipv6 ospf 1 area 1
-exit
-exit
-
-!!!!!!!!! OR !!!!!!!!
 
 en
 config t
@@ -180,14 +170,6 @@ exit
 exit
 
 
-en
-config t
-interface f0/0
-no ipv6 ospf 1 area 1
-exit
-exit
-
-!!!!!!!OR!!!!!!!
 
 en
 config t
@@ -242,7 +224,7 @@ exit
 
 en
 config t
-interface range f0/0-1
+interface range fa0/0-1
 ip ospf 1 area 2
 
 
@@ -281,7 +263,7 @@ exit
 
 en
 config t
-interface range f0/0-1
+interface range fa0/0-1
 ip ospf 1 area 2
 
 

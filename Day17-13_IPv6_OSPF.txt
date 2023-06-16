@@ -45,7 +45,22 @@ exit
 
 en
 config t
-interface range f0/0-1
+interface range fa0/0
+ipv6 ospf 1 area 1
+exit
+exit
+
+
+en
+config t
+interface range fa0/1
+ipv6 ospf 1 area 1
+exit
+exit
+
+en
+config t
+interface l2
 ipv6 ospf 1 area 1
 exit
 exit
@@ -114,7 +129,27 @@ exit
 
 en
 config t
-interface range f0/0-1, f1/0
+interface range fa0/0
+ipv6 ospf 1 area 1
+exit
+exit
+
+en
+config t
+interface range fa0/1
+ipv6 ospf 1 area 1
+exit
+exit
+
+en
+config t
+interface range fa1/0
+ipv6 ospf 1 area 1
+exit
+exit
+en
+config t
+interface l2
 ipv6 ospf 1 area 1
 exit
 exit
@@ -174,10 +209,21 @@ exit
 
 en
 config t
-interface f0/0
+interface fa0/0
 ipv6 ospf 1 area 1
 exit
 exit
+
+
+en
+config t
+interface l2
+ipv6 ospf 1 area 1
+exit
+exit
+
+
+
 
 !!!!!!!OR!!!!!!!
 
@@ -234,7 +280,7 @@ exit
 
 en
 config t
-interface range f0/0-1
+interface range fa0/0-1
 ip ospf 1 area 2
 
 
@@ -273,7 +319,7 @@ exit
 
 en
 config t
-interface range f0/0-1
+interface range fa0/0-1
 ip ospf 1 area 2
 
 
