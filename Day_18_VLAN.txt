@@ -1,0 +1,54 @@
+!!!!!!!SW1
+en
+config t
+interface range fa0/1,fa0/2
+switchport mode access
+switchport access vlan 10
+exit
+exit
+
+en
+config t
+interface range fa0/3,fa0/4
+switchport mode access
+switchport access vlan 20
+exit
+exit
+
+
+en
+config t
+interface fa0/5
+switchport mode trunk
+exit
+exit
+
+show vlan brief
+
+
+
+!!!!!!!SW2
+en
+config t
+interface range fa0/2,fa0/3
+switchport mode access
+switchport access vlan 10
+exit
+exit
+
+en
+config t
+interface range fa0/4,fa0/5
+switchport mode access
+switchport access vlan 20
+exit
+exit
+
+en
+config t
+interface fa0/1
+switchport mode trunk
+exit
+exit
+
+show vlan brief
