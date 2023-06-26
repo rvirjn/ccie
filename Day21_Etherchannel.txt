@@ -1,0 +1,128 @@
+!!!!!!!SW 1
+
+en
+config t
+ho SW1
+int range fa0/1-4
+shutdown
+channel-group 1 mode auto
+exit
+exit
+
+!!!!!!!!!SW2
+en
+config t
+ho SW2
+int range fa0/1-4
+shutdown
+channel-group 1 mode desirable
+exit
+exit
+
+
+en
+config t
+ho SW2
+int range fa0/5-8
+shutdown
+channel-group 2 mode active
+exit
+exit
+
+en
+config t
+ho SW2
+int range fa0/9-12
+shutdown
+channel-group 3 mode on
+exit
+exit
+
+
+!!!!!SW3
+
+en
+config t
+ho SW3
+int range fa0/5-8
+shutdown
+channel-group 2 mode passive
+exit
+exit
+
+
+!!!!!SW4
+en
+config t
+ho SW4
+int range fa0/9-12
+shutdown
+channel-group 3 mode on
+exit
+exit
+
+
+!!!!!!!SW1
+en
+config t
+int range fa0/1-4
+no sh
+exit
+exit
+show etherchannel
+show etherchannel summary
+show spanning-tree
+
+
+
+!!!!!!!SW2
+
+en
+config t
+int range fa0/1-4
+no sh
+exit
+exit
+
+
+en
+config t
+int range fa0/5-8
+no sh
+exit
+exit
+
+
+en
+config t
+int range fa0/9-12
+no sh
+exit
+exit
+
+show etherchannel
+show etherchannel summary
+show spanning-tree
+
+!!!!!!SW3
+
+en
+config t
+int range fa0/5-8
+no sh
+exit
+exit
+show etherchannel
+show etherchannel summary
+show spanning-tree
+
+!!!!!!SW4
+en
+config t
+int range fa0/9-12
+no sh
+exit
+exit
+show etherchannel
+show etherchannel summary
+show spanning-tree
