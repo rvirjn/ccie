@@ -1,0 +1,42 @@
+!!!!!!!R1
+en
+config t
+interface fa0/0
+ip address 192.168.10.10 255.255.255.0
+no sh
+exit
+
+
+ip dhcp pool ccna
+network 192.168.10.0 255.255.255.0
+default-router 192.168.10.10
+exit
+ip dhcp excluded-address 192.168.10.1 192.168.10.10
+exit
+
+
+!!!!!!!R2
+en
+config t
+ho DHCP172
+interface fa0/0
+ip address 172.16.10.10 255.255.255.0
+no sh
+exit
+ip dhcp pool ccna
+network 172.16.10.0 255.255.255.0
+default-router 172.16.10.10
+exit
+ip dhcp excluded-address 172.16.10.1 172.16.10.10
+exit
+
+
+!!!!SW1
+en
+config t
+ip dhcp snooping
+ip dhcp snooping vlan 1
+no ip dhcp snooping information option
+int fa0/1
+ip dhcp snooping trust
+

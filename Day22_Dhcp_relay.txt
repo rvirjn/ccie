@@ -1,0 +1,58 @@
+!!!R2!!!!
+
+en
+config t
+ho DHCP172
+interface fa0/0
+ip address 172.16.10.10 255.255.255.0
+no sh
+exit
+
+
+en
+config t
+ho DHCP172
+interface fa0/1
+ip address 172.16.11.10 255.255.255.0
+no sh
+exit
+
+ip dhcp pool ccna
+network 172.16.10.0 255.255.255.0
+default-router 172.16.10.10
+exit
+ip dhcp excluded-address 172.16.10.1 172.16.10.10
+exit
+
+en
+config t
+ip route 0.0.0.0 0.0.0.0 fa0/0
+exit
+
+
+!!!R0!!!!for dhcp relay
+
+en
+config t
+ho R1
+interface fa0/1
+ip address 192.168.10.10 255.255.255.0
+no sh
+exit
+exit
+
+en
+config t
+interface fa0/0
+ip address 172.16.10.1 255.255.255.0
+no sh
+exit
+exit
+
+
+en
+config t
+int fa0/1
+ip helper-address 172.16.10.10
+exit
+exit
