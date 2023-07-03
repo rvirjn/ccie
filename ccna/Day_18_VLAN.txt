@@ -1,6 +1,7 @@
 !!!!!!!SW1
 en
 config t
+ho SW1
 interface range fa0/1,fa0/2
 switchport mode access
 switchport access vlan 10
@@ -24,12 +25,13 @@ exit
 exit
 
 show vlan brief
-
+show interfaces trunk 
 
 
 !!!!!!!SW2
 en
 config t
+ho SW1
 interface range fa0/2,fa0/3
 switchport mode access
 switchport access vlan 10
