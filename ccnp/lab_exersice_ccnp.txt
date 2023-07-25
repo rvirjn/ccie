@@ -27,6 +27,10 @@ ip dhcp pool R1_2
 network 192.168.2.0 255.255.255.0
 default-router 192.168.13.1
 
+router ospf 1
+router-id 1.1.1.1
+net 192.168.12.0 0.0.0.255 area 0
+net 192.168.13.0 0.0.0.255 area 0
 
 
 
@@ -50,6 +54,10 @@ interface g0/0
 ip helper-address 192.168.12.1
 exit
 
+router ospf 1
+router-id 2.2.2.2
+net 192.168.12.0 0.0.0.255 area 0
+net 192.168.1.0 0.0.0.255 area 1
 
 !!!R3!!
 en
@@ -71,6 +79,10 @@ interface g0/0
 ip helper-address 192.168.13.1
 exit
 
+router ospf 2
+router-id 3.3.3.3
+net 192.168.13.0 0.0.0.255 area 0
+net 192.168.2.0 0.0.0.255 area 2
 
 
 
@@ -125,6 +137,12 @@ interface g0/0
 ip helper-address 192.168.45.4
 exit
 
+router eigrp 1000
+eigrp router-id 6.6.6.6
+net 192.168.45.0 0.0.0.255
+net 192.168.3.0 0.0.0.255
+
+
 
 !!!R6!!
 
@@ -142,6 +160,11 @@ int g0/1
 ip add 192.168.46.6 255.255.255.0
 no sh
 exit
+
+router eigrp 2000
+eigrp router-id 6.6.6.6
+net 192.168.46.0 0.0.0.255
+net 192.168.4.0 0.0.0.255
 
 interface g0/0
 ip helper-address 192.168.46.4
